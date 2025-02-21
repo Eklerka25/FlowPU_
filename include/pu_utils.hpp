@@ -25,3 +25,11 @@
 
 #define H 1
 #define L 0
+
+// ======== errorlevels ======== 
+
+#define ERRORLEVEL_SUC -128
+#define ERRORLEVEL_OOR -1
+#define ERRORLEVEL_OVF -2
+#define ERRORLEVEL_UDF -3
+#define ERRORLEVEL_UND -4
