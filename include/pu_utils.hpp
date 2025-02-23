@@ -1,5 +1,11 @@
 #pragma once
 
+// ======== typedefs ======== 
+
+typedef unsigned long u32;
+typedef unsigned short u16;
+typedef unsigned char Byte;
+
 // ======== registers ======== 
 
 #define AX 0
@@ -14,7 +20,7 @@
 #define LHA 8
 #define LHB 9
 
-#define ERL 10
+#define FLAG 10
 
 #define SP 11
 #define IP 12
@@ -26,10 +32,14 @@
 #define H 1
 #define L 0
 
-// ======== errorlevels ======== 
+// ======== FLAG ======== 
 
-#define ERRORLEVEL_SUC -128
-#define ERRORLEVEL_OOR -1
-#define ERRORLEVEL_OVF -2
-#define ERRORLEVEL_UDF -3
-#define ERRORLEVEL_UND -4
+#define FLAG_SUCCES 0
+#define FLAG_OVERFLOW 1
+#define FLAG_UNDERFLOW 2
+#define FLAG_UNDEFINED 3
+#define FLAG_OUTOFRANGE 4
+
+// ======= MISC ======== 
+
+#define nl "\n";
