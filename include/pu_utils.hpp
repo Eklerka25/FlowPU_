@@ -2,8 +2,8 @@
 
 // ======== typedefs ======== 
 
-typedef unsigned long u32;
-typedef unsigned short u16;
+typedef unsigned long Dword;
+typedef unsigned short Word;
 typedef unsigned char Byte;
 
 // ======== registers ======== 
@@ -39,7 +39,13 @@ typedef unsigned char Byte;
 #define FLAG_UNDERFLOW 2
 #define FLAG_UNDEFINED 3
 #define FLAG_OUTOFRANGE 4
+#define FLAG_INVALID 5
 
 // ======= MISC ======== 
 
 #define nl "\n";
+
+// ======== Memory ======== 
+
+#define KB 1024
+#define MB 1024 * 1024
