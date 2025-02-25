@@ -12,16 +12,14 @@ class Fsis {
         void FlagSet(Byte flag);
         Dword FlagGet();
 
-        Byte bitwise_and(Byte read_reg1, Byte read_reg2, Byte store_reg);
-        Byte bitwise_or(Byte read_reg1, Byte read_reg2, Byte store_reg);
-        Byte bitwise_xor(Byte read_reg1, Byte read_reg2, Byte store_reg);
-        Byte bitwise_nand(Byte read_reg1, Byte read_reg2, Byte store_reg);
-        Byte bitwise_nor(Byte read_reg1, Byte read_reg2, Byte store_reg);
-        Byte bitwise_not(Byte read_reg, Byte store_reg);
+        void bitwise_and(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        void bitwise_or(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        void bitwise_xor(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        void bitwise_nand(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        void bitwise_nor(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        void bitwise_not(Byte read_reg, Byte store_reg);
 
-        Byte math_add(Byte read_reg1, Byte read_reg2, Byte store_reg);
-
-        Byte Execute(char* inst, char* arg1, Byte arg2, Byte arg3);
+        void math_add(Byte read_reg1, Byte read_reg2, Byte store_reg);
 };
 
 class Ram {
