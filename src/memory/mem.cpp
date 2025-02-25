@@ -2,41 +2,41 @@
 #include <pu_utils.hpp>
 #include <pu.hpp>
 
-const u32 mem_size = 512;
+const Dword ram_size = 64 * 1024;
 
-Byte mem[mem_size];
+Byte _ram[ram_size];
 
-void Memory::alloc(int index, Byte value) {
+void Ram::write(int index, Byte value) {
     Fsis cpu;
-    if (index >= 0 && index < mem_size) {
-        mem[index] = value;
+    if (index >= 0 && index < ram_size) {
+        _ram[index] = value;
         cpu.FlagSet(FLAG_SUCCES);
     } else {
         cpu.FlagSet(FLAG_OUTOFRANGE);
     }
 }
 
-Byte Memory::read(int index) {
+Byte Ram::read(int index) {
     Fsis cpu;
-    if (index >= 0 && index < mem_size) {
+    if (index >= 0 && index < ram_size) {
         cpu.FlagSet(FLAG_SUCCES);
-        return mem[index];
+        return _ram[index];
     } else {
         cpu.FlagSet(FLAG_OUTOFRANGE);
         return 0;
     }
 }
 
-Byte Memory::free(int index) {
+Byte Ram::free(int index) {
     Fsis cpu;
-    if (index >= 0 && index < mem_size) {
-        mem[index] = 0x0;
+    if (index >= 0 && index < ram_size) {
+        _ram[index] = 0x0;
         cpu.FlagSet(FLAG_SUCCES);
     } else {
         cpu.FlagSet(FLAG_OUTOFRANGE);
     }
 }
 
-u32 Memory::getsize() {
-    return mem_size;
+Dword Ram::getsize() {
+    return ram_size;
 }
