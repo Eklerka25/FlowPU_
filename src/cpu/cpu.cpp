@@ -2,24 +2,25 @@
 #include <pu_utils.hpp>
 #include <pu.hpp>
 
+#include <cstring>
+
 Fsis cpu;
-Memory memory;
+Ram ram;
 
 void Fsis::Reset() {
     for (int x = 0; x < 16; x++) {
-        this->reg_free(x, H);
-        this->reg_free(x, L);
+        this->reg_free(x);
     }
 
-    for (int x = 0; x < memory.getsize(); x++) {
-        memory.free(x);
+    for (int x = 0; x < ram.getsize(); x++) {
+        ram.free(x);
     }
 }
 
 void Fsis::FlagSet(Byte flag) {
-    this->reg_write(FLAG, H, flag);
+    this->reg_write(FLAG, flag);
 }
 
-u32 Fsis::FlagGet() {
-    return this->reg_read(FLAG, H);
+Dword Fsis::FlagGet() {
+    return this->reg_read(FLAG);
 }
