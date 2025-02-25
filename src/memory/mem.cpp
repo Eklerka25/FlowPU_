@@ -1,42 +1,37 @@
+#include <Utils/pu.hpp>
 #include <cstdint>
-#include <pu_utils.hpp>
 #include <pu.hpp>
 
-const u32 mem_size = 512;
+const uint32 memSize = 512;
 
-Byte mem[mem_size];
+Byte mem[memSize];
 
-void Memory::alloc(int index, Byte value) {
-    Fsis cpu;
-    if (index >= 0 && index < mem_size) {
+void Ram::alloc(int index, Byte value) {
+    if (index >= 0 && index < memSize) {
         mem[index] = value;
-        cpu.FlagSet(FLAG_SUCCES);
+        cpu.FlagSet(flag::SUCCES);
     } else {
-        cpu.FlagSet(FLAG_OUTOFRANGE);
+        cpu.FlagSet(flag::OUTOFRANGE);
     }
 }
 
-Byte Memory::read(int index) {
-    Fsis cpu;
-    if (index >= 0 && index < mem_size) {
-        cpu.FlagSet(FLAG_SUCCES);
+Byte Ram::read(int index) {
+    if (index >= 0 && index < memSize) {
+        cpu.FlagSet(flag::SUCCES);
         return mem[index];
     } else {
-        cpu.FlagSet(FLAG_OUTOFRANGE);
+        cpu.FlagSet(flag::OUTOFRANGE);
         return 0;
     }
 }
 
-Byte Memory::free(int index) {
-    Fsis cpu;
-    if (index >= 0 && index < mem_size) {
+void Ram::free(int index) {
+    if (index >= 0 && index < memSize) {
         mem[index] = 0x0;
-        cpu.FlagSet(FLAG_SUCCES);
+        cpu.FlagSet(flag::SUCCES);
     } else {
-        cpu.FlagSet(FLAG_OUTOFRANGE);
+        cpu.FlagSet(flag::OUTOFRANGE);
     }
 }
 
-u32 Memory::getsize() {
-    return mem_size;
-}
+Dword Ram::getsize() { return memSize; }

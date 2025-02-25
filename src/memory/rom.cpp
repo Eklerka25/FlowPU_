@@ -1,22 +1,21 @@
+#include <Utils/pu.hpp>
 #include <cstdint>
-#include <pu_utils.hpp>
 #include <pu.hpp>
 
-const Dword rom_size = 32 * KB;
+const Dword romSize = 32 * KB;
 
-Byte _rom[rom_size];
+Byte _rom[romSize];
 
 Byte Rom::read(Dword index, Byte reg) {
     Fsis cpu;
     if (index < 16 && index >= 0) {
-        cpu.reg_write(reg, _rom[index]);
-        cpu.FlagSet(FLAG_SUCCES);
+        cpu.RegWrite(reg, _rom[index]);
+        cpu.FlagSet(flag::SUCCES);
     } else {
-        cpu.FlagSet(FLAG_OUTOFRANGE);
+        cpu.FlagSet(flag::OUTOFRANGE);
     }
 }
 
 Dword Rom::getsize() {
-    Fsis cpu;
-    return rom_size;
+    return romSize;
 }
