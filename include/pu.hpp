@@ -19,6 +19,8 @@ class Fsis {
         Byte bitwise_nor(Byte read_reg1, Byte read_reg2, Byte store_reg);
         Byte bitwise_not(Byte read_reg, Byte store_reg);
 
+        Byte math_add(Byte read_reg1, Byte read_reg2, Byte store_reg);
+
         Byte Execute(char* inst, char* arg1, Byte arg2, Byte arg3);
 };
 
@@ -27,6 +29,13 @@ class Ram {
         void write(int index, Byte value);
         Byte read(int index);
         Byte free(int index);
+        
+        Dword getsize();
+};
+
+class Rom {
+    public:
+        Byte read(Dword index, Byte reg);
         
         Dword getsize();
 };
