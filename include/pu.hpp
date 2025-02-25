@@ -4,20 +4,29 @@
 
 class Fsis {
     public:
-        Byte reg_write(int index, int half, Byte value);
-        Byte reg_read(int index, int half);
-        Byte reg_free(int index, int half);
+        Byte reg_write(int index, Byte value);
+        Byte reg_read(int index);
+        Byte reg_free(int index);
 
         void Reset();
         void FlagSet(Byte flag);
-        u32 FlagGet();
+        Dword FlagGet();
+
+        Byte bitwise_and(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        Byte bitwise_or(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        Byte bitwise_xor(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        Byte bitwise_nand(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        Byte bitwise_nor(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        Byte bitwise_not(Byte read_reg, Byte store_reg);
+
+        Byte Execute(char* inst, char* arg1, Byte arg2, Byte arg3);
 };
 
-class Memory {
+class Ram {
     public:
-        void alloc(int index, Byte value);
+        void write(int index, Byte value);
         Byte read(int index);
         Byte free(int index);
         
-        u32 getsize();
+        Dword getsize();
 };
