@@ -19,7 +19,7 @@ class Fsis {
         void bitwise_nor(Byte read_reg1, Byte read_reg2, Byte store_reg);
         void bitwise_not(Byte read_reg, Byte store_reg);
 
-        void math_add(Byte read_reg1, Byte read_reg2, Byte store_reg);
+        Byte math_add(Byte read_reg1, Byte read_reg2, Byte store_reg);
 };
 
 class Ram {
